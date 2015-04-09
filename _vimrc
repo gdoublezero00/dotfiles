@@ -19,3 +19,16 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
 autocmd FileType yaml nmap ,e :execute '!ruby -ryaml -e "begin;YAML::load(open('."'"."%"."'".","."'"."r"."'".').read);rescue ArgumentError=>e;puts e;end"'
+
+
+set nocompatible
+filetype off
+
+set rtp+=~/dotfiles/vimfiles/vundle.git/
+call vundle#rc()
+
+Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+
+filetype plugin indent on
