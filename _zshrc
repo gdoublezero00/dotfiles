@@ -44,7 +44,8 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 #Java
 JAVA=/usr/local/sdk/jdk
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+#export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 JAVA=$JAVA_HOME/bin
 #Scala
 #SCALA=/usr/local/sdk/scala-2.11.0
@@ -75,9 +76,11 @@ GRADLE=/usr/local/sdk/gradle
 #Maven
 MAVEN=/usr/local/sdk/maven/bin
 
+ANDROID_HOME=/usr/local/sdk/android-sdk-macosx
+
 #PATH
 #export PATH=$JREPATH:$JAVA/bin:$SCALA/bin:$GOROOT/bin:$NODEJS/bin:$GAE_PY:$ANDROID_SDK:$ANDROID_NDK:$PATH
-export PATH=$MAVEN:$GRADLE/bin:$RUBY:$JAVA/bin:$SCALA/bin:$SBT/bin:$GOROOT/bin:$PATH
+export PATH=$MAVEN:$GRADLE/bin:$RUBY:$JAVA/bin:$SCALA/bin:$SBT/bin:$GOROOT/bin:$ANDROID_HOME/tools:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 
 
