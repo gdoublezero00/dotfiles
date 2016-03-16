@@ -80,7 +80,7 @@ ANDROID_HOME=/usr/local/sdk/android-sdk-macosx
 
 #PATH
 #export PATH=$JREPATH:$JAVA/bin:$SCALA/bin:$GOROOT/bin:$NODEJS/bin:$GAE_PY:$ANDROID_SDK:$ANDROID_NDK:$PATH
-export PATH=$MAVEN:$GRADLE/bin:$RUBY:$JAVA/bin:$SCALA/bin:$SBT/bin:$GOROOT/bin:$ANDROID_HOME/tools:$PATH
+export PATH=/usr/local/bin:$MAVEN:$GRADLE/bin:$RUBY:$JAVA/bin:$SCALA/bin:$SBT/bin:$GOROOT/bin:$ANDROID_HOME/tools:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 
 
@@ -96,5 +96,8 @@ alias pg_stop='pg_ctl stop'
 #eval "$(rbenv init -)"
 
 #export NLS_LANG=Japanese_Japan.JA16SJIS
+export ORACLE_HOME=/usr/local/sdk/instantclient_11_2
+export DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
 export NLS_LANG=American_Japan.AL32UTF8
 
+export LC_ALL=en_US.UTF-8

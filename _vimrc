@@ -1,7 +1,3 @@
-set transparency=30
-set guifont=Menlo:h14
-set guioptions-=T
-
 set showmode
 set title
 set number
@@ -12,6 +8,7 @@ set showmatch
 set smarttab
 set smartindent
 set tabstop=4
+set directory=~/.vim/tmp
 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -41,6 +38,8 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'derekwyatt/vim-scala'
+
 
 " solarized
 NeoBundle 'altercation/vim-colors-solarized'
@@ -52,6 +51,10 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'cesardeazevedo/Fx-ColorScheme'
+
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
 
 call neobundle#end()
 
