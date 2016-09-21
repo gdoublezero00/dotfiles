@@ -9,6 +9,7 @@ set smarttab
 set smartindent
 set tabstop=4
 set directory=~/.vim/tmp
+set backupdir=~/.vim/backup
 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -56,10 +57,23 @@ NeoBundle 'cesardeazevedo/Fx-ColorScheme'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 
+NeoBundle 'rust-lang/rust.vim'
+NeoBundleLazy 'phildawes/racer', {
+        \   'build' : {
+        \     'mac'  : 'cargo build --release',
+        \     'unix' : 'cargo build --release',
+        \   },
+        \   'autoload' : {
+        \     'filetypes' : 'rust',
+        \   },
+        \ }
+NeoBundle 'rhysd/rust-doc.vim'
 call neobundle#end()
 
 filetype plugin indent on
 filetype indent on
 syntax on
 
-colorscheme jellybeans
+" colorscheme jellybeans
+set background=light
+colorscheme fx

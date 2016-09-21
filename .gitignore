@@ -1,4 +1,7 @@
 *~
 *.swp
 *.bk
-vimfiles/bundle/
+*.gz
+*.bz2
+vimfiles/
+
