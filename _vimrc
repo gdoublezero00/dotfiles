@@ -68,6 +68,16 @@ NeoBundleLazy 'phildawes/racer', {
         \   },
         \ }
 NeoBundle 'rhysd/rust-doc.vim'
+
+NeoBundleLazy 'othree/yajs.vim', {
+		\	'autoload': {
+		\		'filetyes': ['javascript']
+		\	}
+		\ }
+
+let g:jsx_ext_required = 0
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+
 call neobundle#end()
 
 filetype plugin indent on
