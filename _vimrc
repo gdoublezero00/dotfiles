@@ -84,6 +84,3 @@ filetype plugin indent on
 filetype indent on
 syntax on
 
-" colorscheme jellybeans
-set background=light
-colorscheme fx

@@ -1,107 +1,45 @@
-#export LANG=ja_JP.UTF-8
+PROMPT='
+[%n@%m] %F{green}%(5~,%-1~/.../%2~,%~)%f
+%F{green}%B●%b%f '
 
-#prompt format
-PROMPT="%{${fg[blue]}%}[%n@%m]%(!.#.$) %{${reset_color}%}"
-RPROMPT=$'%{\e[32m%}%/%{\e[m%}'
+setopt IGNOREEOF
+setopt share_history
+setopt histignorealldups
 
-# Set up the prompt
-#autoload -Uz promptinit
-#promptinit
-#prompt adam1
-
-setopt histignorealldups sharehistory
-
-# Use emacs keybindings even if our EDITOR is set to vi
-#bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
 HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
-# Use modern completion system
+fpath=(~/.zsh/completion $fpath)
+
 autoload -Uz compinit
-compinit
+compinit -u
 
-#zstyle ':completion:*' auto-description 'specify: %d'
-#zstyle ':completion:*' completer _expand _complete _correct _approximate
-#zstyle ':completion:*' format 'Completing %d'
-#zstyle ':completion:*' group-name ''
-#zstyle ':completion:*' menu select=2
-#eval "$(dircolors -b)"
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-#zstyle ':completion:*' list-colors ''
-#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-#zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-#zstyle ':completion:*' menu select=long
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-#zstyle ':completion:*' use-compctl false
-#zstyle ':completion:*' verbose true
+autoload -Uz colors
+colors
+zstyle ':completion:*' list-colors "${LS_COLORS}"
 
-#zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+setopt complete_in_word
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion::complete:*' use-cache true
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+setopt list_packed
 
 
-#Java
-JAVA=/usr/local/sdk/jdk
-#export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-JAVA=$JAVA_HOME/bin
-#Scala
-#SCALA=/usr/local/sdk/scala-2.11.0
-SCALA=/usr/local/sdk/scala
-#sbt
-SBT=/usr/local/sdk/sbt
-#GO
-export GOROOT=/usr/local/go
-export GOPATH=/usr/local/go/third-party
-#nodejs
-#NODEJS=/usr/local/sdk/nodejs
-#Google App Engine - python
-#GAE_PY=/usr/local/sdk/google_appengine_Python
-#Android
-#ANDROID_SDK=/usr/local/sdk/android-sdk-linux/platform-tools
-#ANDROID_NDK=/usr/local/sdk/android-ndk
-#ANDROID_NDK_ROOT=/usr/local/sdk/android-ndk
-#jre
-#JREPATH=/opt/jre/bin
-
-#Ruby
-RUBY=/Users/agel/.rbenv/versions/1.9.3-p392/bin
-
-#Gradle
-#GRADLE=/usr/local/sdk/gradle-1.11
-GRADLE=/usr/local/sdk/gradle
-
-#Maven
-MAVEN=/usr/local/sdk/maven/bin
-
-ANDROID_HOME=/usr/local/sdk/android-sdk-macosx
-
-#brew PHP
-PHP=/usr/local/php
-
-#PATH
-#export PATH=$JREPATH:$JAVA/bin:$SCALA/bin:$GOROOT/bin:$NODEJS/bin:$GAE_PY:$ANDROID_SDK:$ANDROID_NDK:$PATH
-export PATH=$PHP/bin:/usr/local/bin:$MAVEN:$GRADLE/bin:$RUBY:$JAVA/bin:$SCALA/bin:$SBT/bin:$GOROOT/bin:$ANDROID_HOME/tools:$PATH
-export NODE_PATH=/usr/local/lib/node_modules
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:*' check-for-changes false
+zstyle ':vcs_info:*' unstagedstr "%F{red}%B＋%b%f"
+zstyle ':vcs_info:*' stagedstr "%F{yellow}* %f"
+zstyle ':vcs_info:*' formats "%u%c%F{green}[ %b ]%f"
+zstyle ':vcs_info:*' actionformats '[%b | %a]'
+precmd () { vcs_info }
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 
-#aliases
-alias ls='ls -F -G'
-alias sudo="sudo env PATH=$PATH"
-alias gitdiff="git difftool --tool=vimdiff --no-prompt"
 
-export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
+chpwd() { ls -F --color=auto }
 
-alias pg_start='pg_ctl -D /var/postgres -l /var/postgres/server.log start'
-alias pg_stop='pg_ctl stop'
+alias ls='ls -F --color=auto'
 
-#eval "$(rbenv init -)"
-
-#export NLS_LANG=Japanese_Japan.JA16SJIS
-export ORACLE_HOME=/usr/local/sdk/instantclient_11_2
-export DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
-export NLS_LANG=American_Japan.AL32UTF8
-
-export LC_ALL=en_US.UTF-8
+export GOHOME=~/.go
