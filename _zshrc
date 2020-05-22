@@ -40,8 +40,6 @@ chpwd() { ls -F --color=auto }
 
 alias ls='ls -F --color=auto'
 
-export GOHOME=~/.go
-
 #
 # pyenv and pipenv
 # 
@@ -50,4 +48,14 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PIPENV_VENV_IN_PROJECT=true
 
+#
+# Go
+#
+export PATH=$PATH:/usr/local/go/bin
+export GOHOME=~/.go
+export GOPATH=~/.go
+
+#
+# tmux
+#
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
