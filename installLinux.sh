@@ -29,7 +29,7 @@ sudo apt install -y lxd lxd-client lxd-tools criu zfsutils-linux
 	#apt install build-essential libffi-dev 
 }
 
-FuncPyenv {
+FuncPyenv () {
 sudo apt install -y build-essential \
 	libffi-dev \
 	libssl-dev \
@@ -47,6 +47,13 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 source ~/.zshrc
 }
 
+FuncGoenv () {
+git clone https://github.com/syndbg/goenv.git ~/.goenv
+echo 'export GOENV_ROOT=$HOME/.goenv' >> ~/.zshrc
+echo 'export PATH=$GOENV_ROOT/bin:$PATH' >> ~/.zshrc
+echo 'eval "$(goenv init -)"' >> ~/.zshrc
+}
+
 
 case "$1" in
 	"docker") FuncDocker
@@ -54,6 +61,8 @@ case "$1" in
 	"LXD") FuncLXD
 	;;
 	"pyenv") FuncPyenv
+	;;
+	"goenv") FuncGoenv
 	;;
 
 esac
