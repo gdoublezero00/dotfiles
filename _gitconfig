@@ -1,0 +1,14 @@
+[user]
+	email = jun-izumida@agc.com
+	name = Jun Izumida
+[http]
+	sslVerify = false
+	postBuffer = 1048576000
+[core]
+	editor = vim
+[commit]
+	template = /home/jun-izumida/.commit_template
+[merge]
+	ff = false
+[pull]
+	ff = only
