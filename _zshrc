@@ -56,6 +56,12 @@ export GOHOME=~/.go
 export GOPATH=~/.go
 
 #
+# Java
+#
+export GRADLE_HOME=/opt/gradle/latest
+export PATH=${GRADLE_HOME}/bin:${PATH}
+
+#
 # tmux
 #
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
@@ -68,3 +74,5 @@ eval "$(pyenv init -)"
 export GOENV_ROOT=$HOME/.goenv
 export PATH=$GOENV_ROOT/bin:$PATH
 eval "$(goenv init -)"
+
+export PATH="$PATH:`yarn global bin`"
