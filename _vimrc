@@ -20,67 +20,57 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim
-	call neobundle#begin(expand('~/.vim/bundle/'))
 endif
-
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-\ 'build' : {
-\ 'windows' : 'make -f make_mingw32.mak',
-\ 'cygwin' : 'make -f make_cygwin.mak',
-\ 'mac' : 'make -f make_mac.mak',
-\ 'unix' : 'make -f make_unix.mak',
-\ },
-\ }
-NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'derekwyatt/vim-scala'
-
-
-" solarized
-NeoBundle 'altercation/vim-colors-solarized'
-" mustang
-NeoBundle 'croaker/mustang-vim'
-" jellybeans
-NeoBundle 'nanotech/jellybeans.vim'
-" molokai
-NeoBundle 'tomasr/molokai'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'cesardeazevedo/Fx-ColorScheme'
-
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-
-NeoBundle 'rust-lang/rust.vim'
-NeoBundleLazy 'phildawes/racer', {
-        \   'build' : {
-        \     'mac'  : 'cargo build --release',
-        \     'unix' : 'cargo build --release',
-        \   },
-        \   'autoload' : {
-        \     'filetypes' : 'rust',
-        \   },
-        \ }
-NeoBundle 'rhysd/rust-doc.vim'
-
-NeoBundleLazy 'othree/yajs.vim', {
-		\	'autoload': {
-		\		'filetyes': ['javascript']
-		\	}
-		\ }
-
-let g:jsx_ext_required = 0
-autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-
-call neobundle#end()
 
 filetype plugin indent on
 filetype indent on
 syntax on
 
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('~/.dein')
+  " XDG base direcory compartible
+  let g:dein#cache_directory = $HOME . '/.dein'
+
+  call dein#begin('~/.dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here like this:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('tomasr/molokai', {'merged': 0})
+
+   let s:toml_dir  = $HOME . '/.vim/rc' 
+   let s:toml      = s:toml_dir . '/dein.toml'
+   let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
+  
+   call dein#load_toml(s:toml,      {'lazy': 0})
+   call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+colorscheme molokai

@@ -1,0 +1,15 @@
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+hook_add = '''
+    colorscheme tender
+    syntax on
+'''
