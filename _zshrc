@@ -40,6 +40,8 @@ chpwd() { ls -F --color=auto }
 
 alias ls='ls -F --color=auto'
 
+stty stop undef
+
 #
 # pyenv and pipenv
 # 
@@ -74,5 +76,11 @@ eval "$(pyenv init -)"
 export GOENV_ROOT=$HOME/.goenv
 export PATH=$GOENV_ROOT/bin:$PATH
 eval "$(goenv init -)"
+export GOENV_ROOT=$HOME/.goenv
+export PATH=$GOENV_ROOT/bin:$PATH
+eval "$(goenv init -)"
+alias ide="~/dotfiles/_ide.sh"
 
-export PATH="$PATH:`yarn global bin`"
+export PATH=~/.yarn/bin:$PATH
+
+
