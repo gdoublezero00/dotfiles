@@ -3,11 +3,11 @@ set title
 set number
 set autoindent
 set incsearch
-set shiftwidth=4
+set shiftwidth=2
 set showmatch
 set smarttab
 set smartindent
-set tabstop=4
+set tabstop=2
 set directory=~/.vim/tmp
 set backupdir=~/.vim/backup
 
